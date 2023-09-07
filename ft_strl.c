@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strl.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: imbo <imbo@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/09/06 05:25:09 by imbo              #+#    #+#             */
+/*   Updated: 2023/09/06 06:01:39 by imbo             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 
-size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
 	size_t	slen;
 	size_t	dlen;
@@ -19,14 +31,15 @@ size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
 	dst[dlen + i] = '\0';
 	return (dlen + slen);
 }
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
 	size_t	slen;
 	size_t	i;
 
 	i = 0;
 	slen = ft_strlen(src);
-	while (slen && slen[i] && i < dstsize)
+	while (slen && src[i] && i < dstsize)
 	{
 		dst[i] = src[i];
 		i++;

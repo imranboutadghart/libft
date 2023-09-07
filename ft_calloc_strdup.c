@@ -1,33 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_calloc_strdup.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imbo <imbo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/06 05:24:40 by imbo              #+#    #+#             */
-/*   Updated: 2023/09/06 06:00:44 by imbo             ###   ########.fr       */
+/*   Created: 2023/09/07 09:08:59 by imbo              #+#    #+#             */
+/*   Updated: 2023/09/07 11:41:49 by imbo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+void	*ft_calloc(size_t nmemb, size_t size)
 {
-	size_t	i;
-	long	result;
-	int		sign;
+	void	*addr;
+	int		i;
 
+	addr = malloc(nmemb * size);
 	i = 0;
-	sign = 1;
-	result = 0;
-	while (' ' == str[i] || '\f' == str[i] || '\n' == str[i] 
-		|| '\r' == str[i] || '\t' == str[i] || '\v' == str[i])
-		i++;
-	if ('+' == str[i] || '-' == str[i])
-		if ('-' == str[i++])
-			sign = -1;
-	while (str[i] >= '0' && str[i] <= '9')
-		result = result * 10 + str[i++] - '0';
-	return ((int )(sign * result));
+	ft_bzero(addr, nmemb * size);
+	return (addr);
+}
+
+char	*ft_strdup(char *str)
+{
+	size_t	size;
+	size_t	i;
+	char	*dst;
+
+	size = ft_strlen(str);
+	dst = malloc (size * sizeof(char));
+	i = -1;
+	while (++i < size)
+		dst[i] = str[i];
+	return (dst);
 }
