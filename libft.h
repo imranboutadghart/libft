@@ -6,7 +6,7 @@
 /*   By: imbo <imbo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 05:17:34 by imbo              #+#    #+#             */
-/*   Updated: 2023/09/07 12:21:12 by imbo             ###   ########.fr       */
+/*   Updated: 2023/09/07 15:34:03 by imbo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ char	*ft_strtrim(char const *s1, char const *set);
 char	**ft_split(char const *s, char c);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+//strmapi needs to verify the ppurpose of the unsigned int
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
