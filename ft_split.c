@@ -6,13 +6,13 @@
 /*   By: imbo <imbo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 13:33:34 by imbo              #+#    #+#             */
-/*   Updated: 2023/09/07 14:40:33 by imbo             ###   ########.fr       */
+/*   Updated: 2023/09/07 16:57:07 by imbo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	count_words(const char *s, char c)
+static size_t	count_words(const char *s, char c)
 {
 	int	flag;
 	int	i;
@@ -32,7 +32,7 @@ size_t	count_words(const char *s, char c)
 	return (count);
 }
 
-size_t	count_word_len(const char *s, char c)
+static size_t	count_word_len(const char *s, char c)
 {
 	size_t	i;
 

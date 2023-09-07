@@ -6,7 +6,7 @@
 /*   By: imbo <imbo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/06 05:24:40 by imbo              #+#    #+#             */
-/*   Updated: 2023/09/07 15:10:34 by imbo             ###   ########.fr       */
+/*   Updated: 2023/09/07 16:56:32 by imbo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_atoi(const char *str)
 	return ((int )(sign * result));
 }
 
-int	count_digits(int n)
+static int	count_digits(int n)
 {
 	int	count;
 

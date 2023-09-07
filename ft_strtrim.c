@@ -6,13 +6,13 @@
 /*   By: imbo <imbo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/07 12:37:15 by imbo              #+#    #+#             */
-/*   Updated: 2023/09/07 14:07:42 by imbo             ###   ########.fr       */
+/*   Updated: 2023/09/07 16:57:44 by imbo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_inset(char c, const char *set)
+static int	ft_inset(char c, const char *set)
 {
 	int	i;
 
@@ -23,7 +23,7 @@ int	ft_inset(char c, const char *set)
 	return (0);
 }
 
-size_t	index_not_in_set_from_start(char const *s1, char const *set)
+static size_t	index_not_in_set_from_start(char const *s1, char const *set)
 {
 	size_t	i;
 
@@ -34,7 +34,7 @@ size_t	index_not_in_set_from_start(char const *s1, char const *set)
 	return (i);
 }
 
-size_t	index_not_in_set_from_end(char const *s1, char const *set)
+static size_t	index_not_in_set_from_end(char const *s1, char const *set)
 {
 	int	i;
 
