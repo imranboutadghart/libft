@@ -1,36 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc_strdup.c                                 :+:      :+:    :+:   */
+/*   ft_strn.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imbo <imbo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 09:08:59 by imbo              #+#    #+#             */
-/*   Updated: 2023/09/07 14:06:57 by imbo             ###   ########.fr       */
+/*   Created: 2023/09/06 05:25:34 by imbo              #+#    #+#             */
+/*   Updated: 2023/09/07 14:21:15 by imbo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	void	*addr;
-
-	addr = malloc(nmemb * size);
-	ft_bzero(addr, nmemb * size);
-	return (addr);
-}
-
-char	*ft_strdup(char *str)
-{
-	size_t	size;
 	size_t	i;
-	char	*dst;
 
-	size = ft_strlen(str);
-	dst = malloc (size * sizeof(char));
-	i = -1;
-	while (++i < size)
-		dst[i] = str[i];
-	return (dst);
+	i = 0;
+	while (s1 && s2 && s1[i] == s2[i] && i < n)
+		i++;
+	return (s1[i] - s2[i]);
 }

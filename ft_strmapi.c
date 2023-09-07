@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_calloc_strdup.c                                 :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imbo <imbo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/07 09:08:59 by imbo              #+#    #+#             */
-/*   Updated: 2023/09/07 14:06:57 by imbo             ###   ########.fr       */
+/*   Created: 2023/09/07 15:10:53 by imbo              #+#    #+#             */
+/*   Updated: 2023/09/07 15:17:19 by imbo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_calloc(size_t nmemb, size_t size)
-{
-	void	*addr;
-
-	addr = malloc(nmemb * size);
-	ft_bzero(addr, nmemb * size);
-	return (addr);
-}
-
-char	*ft_strdup(char *str)
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
 	size_t	size;
 	size_t	i;
-	char	*dst;
+	char	*str;
 
-	size = ft_strlen(str);
-	dst = malloc (size * sizeof(char));
-	i = -1;
-	while (++i < size)
-		dst[i] = str[i];
-	return (dst);
+	size = ft_strlen(s);
+	str = (char *)malloc ((size + 1) * sizeof(char));
+	if (!str)
+		return (str);
+	i = 0;
+	while (i < size)
+	{
+		str[i] = f(i, s[i]);
+	}
+	return (str);
 }
