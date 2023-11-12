@@ -6,23 +6,14 @@ SRC= ft_atoi.c ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_
 BSRC= ft_lstaddback_bonus.c ft_lstadd_front_bonus.c ft_lstclear_bonus.c ft_lstdelone_bonus.c ft_lstiter_bonus.c ft_lstlast_bonus.c ft_lstmap_bonus.c ft_lstnew_bonus.c ft_lstsize_bonus.c
 OBJ=$(SRC:.c=.o)
 BOBJ=$(BSRC:.c=.o)
-#TEST variable holds the name of a test file
-TEST=deleteme.c
-
-
-$(NAME) : $(OBJ)
-	$(AR) $@ $^
-
-.PHONY : bonus test all clean fclean re
-bonus : $(OBJ) $(BOBJ)
-	$(AR) $(NAME) $^
-
-test : $(SRC) $(BSRC) $(TEST)
-	@$(CC) $(CFLAGS:-Werror=) $(SRC) $(BSRC) $(TEST)
-	@./a.out
-	@rm a.out
 
 all : $(NAME)
+
+$(NAME) : $(OBJ)
+	$(AR) $(NAME) $(OBJ)
+
+bonus : $(OBJ) $(BOBJ)
+	$(AR) $(NAME) $(OBJ) $(BOBJ)
 
 clean :
 	rm -rf $(OBJ) $(BOBJ)
@@ -30,6 +21,4 @@ clean :
 fclean : clean
 	rm -rf $(NAME)
 re : fclean all
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) -c $(SRC) $(BSRC)
-	gcc -nostartfiles -shared -o libft.so $(OBJ) $(BOBJ)
+.PHONY : bonus all clean fclean re
