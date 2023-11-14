@@ -6,7 +6,7 @@
 /*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/01 16:21:02 by iboutadg          #+#    #+#             */
-/*   Updated: 2023/11/06 19:58:10 by iboutadg         ###   ########.fr       */
+/*   Updated: 2023/11/14 22:28:23 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	t_list	*newlist;
 	t_list	*curr;
 
-	if (!lst)
+	if (!lst || !f)
 		return (lst);
 	newlist = (t_list *)malloc(sizeof(t_list));
 	if (!newlist)
