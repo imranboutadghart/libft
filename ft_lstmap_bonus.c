@@ -3,40 +3,46 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstmap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: iboutadg <iboutadg@student.42.fr>          +#+  +:+       +#+        */
+/*   By: iboutadg <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/01 16:21:02 by iboutadg          #+#    #+#             */
-/*   Updated: 2023/11/14 22:28:23 by iboutadg         ###   ########.fr       */
+/*   Created: 2023/11/15 00:05:19 by iboutadg          #+#    #+#             */
+/*   Updated: 2023/11/15 00:11:21 by iboutadg         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+void	inicializer(t_list **prev, t_list **head, t_list **tmp, t_list *lst)
+{
+	*prev = NULL;
+	*head = NULL;
+	*tmp = lst;
+}
+
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	t_list	*newlist;
-	t_list	*curr;
+	t_list	*prev;
+	t_list	*tmp;
+	t_list	*head;
+	t_list	*new_node;
 
-	if (!lst || !f)
-		return (lst);
-	newlist = (t_list *)malloc(sizeof(t_list));
-	if (!newlist)
-		return (0);
-	newlist->content = f(lst->content);
-	del(newlist->content);
-	newlist->content = f(lst->content);
-	curr = newlist;
-	while (lst->next)
+	if (!lst || !f || !del)
+		return (NULL);
+	inicializer(&prev, &head, &tmp, lst);
+	while (tmp)
 	{
-		curr->next = (t_list *)malloc(sizeof(t_list));
-		if (!curr->next)
+		new_node = ft_lstnew(f(tmp->content));
+		if (!new_node)
 		{
-			ft_lstclear(&newlist, del);
-			return (0);
+			ft_lstclear(&head, del);
+			return (NULL);
 		}
-		curr = curr->next;
-		lst = lst->next;
-		curr->content = f(lst->content);
+		if (!head)
+			head = new_node;
+		else
+			prev->next = new_node;
+		prev = new_node;
+		tmp = tmp->next;
 	}
-	return (newlist);
+	return (head);
 }
